@@ -1,0 +1,46 @@
+{
+  "name": "listing_search_v1",
+  "definition": {
+    "mappings": {
+      "dynamic": false,
+      "fields": {
+        "title": {
+          "type": "string",
+          "analyzer": "lucene.standard",
+          "multi": {
+            "autocomplete": {
+              "type": "autocomplete",
+              "tokenization": "edgeGram",
+              "minGrams": 2,
+              "maxGrams": 15
+            }
+          }
+        },
+        "description": {
+          "type": "string",
+          "analyzer": "lucene.standard"
+        },
+        "address": {
+          "type": "document",
+          "fields": {
+            "thana": { "type": "string", "facet": true },
+            "district": { "type": "string", "facet": true },
+            "division": { "type": "string", "facet": true }
+          }
+        },
+        "attributes": {
+          "type": "document",
+          "fields": {
+            "brand": { "type": "string" },
+            "model": { "type": "string" }
+          }
+        },
+        "categoryId": { "type": "objectId" },
+        "condition": { "type": "string" },
+        "price": { "type": "number", "facet": true },
+        "status": { "type": "string" },
+        "location": { "type": "geo" }
+      }
+    }
+  }
+}

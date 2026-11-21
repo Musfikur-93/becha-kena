@@ -41,6 +41,8 @@ The Becha-Kena platform uses **12 core collections** inside MongoDB Atlas, desig
 | **`reports`** | Trust & Safety | User/listing abuse tickets, scam complaints, and 90-day immutable listing/chat JSON snapshots. | D7, FR-MOD-02 |
 | **`ban_appeals`** | Compliance Ticket | Dispute records submitted by suspended/banned users, routed to the Admin Compliance Officer queue. | D7, FR-MOD-02 |
 | **`admin_audit_logs`** | Security Audit Trail | Strictly append-only, immutable record of all privileged staff operations (Kill Switch, manual KYC override, warrant exports). | D7, SEC-07, PERM-05 |
+| **`admin_2fa_secrets`** | Security Secret | AES-256-GCM encrypted TOTP secrets and recognized devices for staff 2FA (`architecture.md §5.7`, Decision D-04). | Arch §5.7, PERM-05 |
+| **`notifications`** | In-App Alert Store | Persistent in-app notifications backing PRD §6 Event & Notification Matrix with 90-day TTL (Decision D-05). | PRD §6 |
 
 ---
 
@@ -84,8 +86,9 @@ The Becha-Kena platform uses **12 core collections** inside MongoDB Atlas, desig
 * `status`: `String` (`'pending' | 'verified' | 'rejected' | 'manual_review'`). Default: `'pending'`.
 * `canonicalNidHash`: `String` (HMAC-SHA-256 of Porichoy-resolved 10-digit Smart NID; `select: false`).
 * `compositeDobHash`: `String` (HMAC-SHA-256 of `DOB + Name`; `select: false`).
+* `guardianCanonicalNidHash`: `String` (Nullable, HMAC-SHA-256 of guardian's canonical Smart NID; `select: false`, sparse index for 2-minor quota & contamination rule).
 * `guardianName`: `String` (Nullable, for minor accounts).
-* `guardianRelationship`: `String` (`'FATHER' | 'MOTHER' | 'LEGAL_GUARDIAN'`, Nullable).
+* `guardianRelationship`: `String` (`'FATHER' | 'MOTHER' | 'ADULT_SIBLING' | 'LEGAL_GUARDIAN'`, Nullable; Decision D-03).
 * `storageKeys`: `Subdocument` (`{ frontKey: String, backKey: String, selfieKey: String }` in Cloudflare R2 private bucket; `select: false`).
 * `porichoyRefId`: `String` (Transaction ID from Porichoy e-KYC API; `select: false`).
 * `porichoyResponse`: `Mixed` (Raw payload stored encrypted for compliance audit; `select: false`).

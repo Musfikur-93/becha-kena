@@ -1,0 +1,438 @@
+{
+  "version": "1.0.0",
+  "note": "Contains all 8 Bangladesh divisions, all 64 districts with WGS 84 [longitude, latitude] centroids, all major Dhaka division thanas, and district-headquarter thanas across the country. Extend thanas[] per district as needed for full 495-upazila granularity.",
+  "divisions": [
+    {
+      "name": "Dhaka",
+      "districts": [
+        {
+          "name": "Dhaka",
+          "centroid": [90.4125, 23.8103],
+          "thanas": [
+            { "name": "Gulshan", "centroid": [90.4125, 23.7925] },
+            { "name": "Banani", "centroid": [90.4043, 23.7937] },
+            { "name": "Dhanmondi", "centroid": [90.3742, 23.7461] },
+            { "name": "Mirpur", "centroid": [90.3654, 23.8223] },
+            { "name": "Uttara", "centroid": [90.3984, 23.8759] },
+            { "name": "Mohammadpur", "centroid": [90.3588, 23.7662] },
+            { "name": "Motijheel", "centroid": [90.4175, 23.7330] },
+            { "name": "Badda", "centroid": [90.4267, 23.7805] },
+            { "name": "Rampura", "centroid": [90.4203, 23.7612] },
+            { "name": "Khilgaon", "centroid": [90.4256, 23.7566] },
+            { "name": "Tejgaon", "centroid": [90.3929, 23.7598] },
+            { "name": "Farmgate", "centroid": [90.3889, 23.7561] },
+            { "name": "Shahbagh", "centroid": [90.3958, 23.7389] },
+            { "name": "Lalbagh", "centroid": [90.3881, 23.7189] },
+            { "name": "Wari", "centroid": [90.4182, 23.7176] },
+            { "name": "Jatrabari", "centroid": [90.4342, 23.7104] },
+            { "name": "Demra", "centroid": [90.4956, 23.7267] },
+            { "name": "Paltan", "centroid": [90.4139, 23.7362] },
+            { "name": "Ramna", "centroid": [90.4018, 23.7420] },
+            { "name": "Kalabagan", "centroid": [90.3822, 23.7465] },
+            { "name": "New Market", "centroid": [90.3845, 23.7332] },
+            { "name": "Hazaribagh", "centroid": [90.3694, 23.7351] },
+            { "name": "Kamrangirchar", "centroid": [90.3728, 23.7145] },
+            { "name": "Kafrul", "centroid": [90.3802, 23.7979] },
+            { "name": "Cantonment", "centroid": [90.3997, 23.8178] },
+            { "name": "Khilkhet", "centroid": [90.4216, 23.8315] },
+            { "name": "Bashundhara", "centroid": [90.4314, 23.8151] },
+            { "name": "Pallabi", "centroid": [90.3667, 23.8260] },
+            { "name": "Savar", "centroid": [90.2667, 23.8583] },
+            { "name": "Keraniganj", "centroid": [90.3417, 23.6944] },
+            { "name": "Dhamrai", "centroid": [90.2144, 23.9167] },
+            { "name": "Dohar", "centroid": [90.1306, 23.5917] },
+            { "name": "Nawabganj", "centroid": [90.1667, 23.6667] }
+          ]
+        },
+        {
+          "name": "Gazipur",
+          "centroid": [90.4203, 23.9999],
+          "thanas": [
+            { "name": "Gazipur Sadar", "centroid": [90.4203, 23.9999] },
+            { "name": "Tongi", "centroid": [90.4024, 23.8979] },
+            { "name": "Kaliakair", "centroid": [90.2167, 24.0750] },
+            { "name": "Kaliganj", "centroid": [90.5667, 23.9250] },
+            { "name": "Kapasia", "centroid": [90.5667, 24.1000] },
+            { "name": "Sreepur", "centroid": [90.4833, 24.2000] }
+          ]
+        },
+        {
+          "name": "Narayanganj",
+          "centroid": [90.5000, 23.6238],
+          "thanas": [
+            { "name": "Narayanganj Sadar", "centroid": [90.5000, 23.6238] },
+            { "name": "Fatullah", "centroid": [90.4781, 23.6439] },
+            { "name": "Siddhirganj", "centroid": [90.5172, 23.6836] },
+            { "name": "Bandar", "centroid": [90.5333, 23.6167] },
+            { "name": "Rupganj", "centroid": [90.5167, 23.7917] },
+            { "name": "Sonargaon", "centroid": [90.6167, 23.6500] },
+            { "name": "Araihazar", "centroid": [90.6500, 23.7917] }
+          ]
+        },
+        {
+          "name": "Tangail",
+          "centroid": [89.9167, 24.2500],
+          "thanas": [
+            { "name": "Tangail Sadar", "centroid": [89.9167, 24.2500] },
+            { "name": "Mirzapur", "centroid": [90.0917, 24.1083] },
+            { "name": "Madhupur", "centroid": [90.0250, 24.6167] }
+          ]
+        },
+        {
+          "name": "Narsingdi",
+          "centroid": [90.7177, 23.9229],
+          "thanas": [{ "name": "Narsingdi Sadar", "centroid": [90.7177, 23.9229] }]
+        },
+        {
+          "name": "Munshiganj",
+          "centroid": [90.5305, 23.5422],
+          "thanas": [{ "name": "Munshiganj Sadar", "centroid": [90.5305, 23.5422] }]
+        },
+        {
+          "name": "Manikganj",
+          "centroid": [90.0003, 23.8644],
+          "thanas": [{ "name": "Manikganj Sadar", "centroid": [90.0003, 23.8644] }]
+        },
+        {
+          "name": "Kishoreganj",
+          "centroid": [90.7829, 24.4449],
+          "thanas": [{ "name": "Kishoreganj Sadar", "centroid": [90.7829, 24.4449] }]
+        },
+        {
+          "name": "Faridpur",
+          "centroid": [89.8429, 23.6070],
+          "thanas": [{ "name": "Faridpur Sadar", "centroid": [89.8429, 23.6070] }]
+        },
+        {
+          "name": "Gopalganj",
+          "centroid": [89.8266, 23.0050],
+          "thanas": [{ "name": "Gopalganj Sadar", "centroid": [89.8266, 23.0050] }]
+        },
+        {
+          "name": "Madaripur",
+          "centroid": [90.1896, 23.1641],
+          "thanas": [{ "name": "Madaripur Sadar", "centroid": [90.1896, 23.1641] }]
+        },
+        {
+          "name": "Rajbari",
+          "centroid": [89.6445, 23.7574],
+          "thanas": [{ "name": "Rajbari Sadar", "centroid": [89.6445, 23.7574] }]
+        },
+        {
+          "name": "Shariatpur",
+          "centroid": [90.3463, 23.2423],
+          "thanas": [{ "name": "Shariatpur Sadar", "centroid": [90.3463, 23.2423] }]
+        }
+      ]
+    },
+    {
+      "name": "Chattogram",
+      "districts": [
+        {
+          "name": "Chattogram",
+          "centroid": [91.7832, 22.3569],
+          "thanas": [
+            { "name": "Kotwali", "centroid": [91.8325, 22.3384] },
+            { "name": "Panchlaish", "centroid": [91.8290, 22.3652] },
+            { "name": "Agrabad", "centroid": [91.8123, 22.3239] },
+            { "name": "Halishahar", "centroid": [91.7824, 22.3361] },
+            { "name": "Khulshi", "centroid": [91.8091, 22.3612] },
+            { "name": "Patenga", "centroid": [91.7906, 22.2442] }
+          ]
+        },
+        {
+          "name": "Cox's Bazar",
+          "centroid": [92.0058, 21.4272],
+          "thanas": [{ "name": "Cox's Bazar Sadar", "centroid": [92.0058, 21.4272] }]
+        },
+        {
+          "name": "Cumilla",
+          "centroid": [91.1809, 23.4607],
+          "thanas": [{ "name": "Cumilla Sadar", "centroid": [91.1809, 23.4607] }]
+        },
+        {
+          "name": "Brahmanbaria",
+          "centroid": [91.1115, 23.9571],
+          "thanas": [{ "name": "Brahmanbaria Sadar", "centroid": [91.1115, 23.9571] }]
+        },
+        {
+          "name": "Chandpur",
+          "centroid": [90.6712, 23.2333],
+          "thanas": [{ "name": "Chandpur Sadar", "centroid": [90.6712, 23.2333] }]
+        },
+        {
+          "name": "Feni",
+          "centroid": [91.3976, 23.0159],
+          "thanas": [{ "name": "Feni Sadar", "centroid": [91.3976, 23.0159] }]
+        },
+        {
+          "name": "Lakshmipur",
+          "centroid": [90.8415, 22.9447],
+          "thanas": [{ "name": "Lakshmipur Sadar", "centroid": [90.8415, 22.9447] }]
+        },
+        {
+          "name": "Noakhali",
+          "centroid": [91.0973, 22.8696],
+          "thanas": [{ "name": "Noakhali Sadar", "centroid": [91.0973, 22.8696] }]
+        },
+        {
+          "name": "Bandarban",
+          "centroid": [92.2184, 22.1953],
+          "thanas": [{ "name": "Bandarban Sadar", "centroid": [92.2184, 22.1953] }]
+        },
+        {
+          "name": "Khagrachhari",
+          "centroid": [91.9847, 23.1193],
+          "thanas": [{ "name": "Khagrachhari Sadar", "centroid": [91.9847, 23.1193] }]
+        },
+        {
+          "name": "Rangamati",
+          "centroid": [92.1789, 22.6533],
+          "thanas": [{ "name": "Rangamati Sadar", "centroid": [92.1789, 22.6533] }]
+        }
+      ]
+    },
+    {
+      "name": "Rajshahi",
+      "districts": [
+        {
+          "name": "Rajshahi",
+          "centroid": [88.6042, 24.3745],
+          "thanas": [
+            { "name": "Boalia", "centroid": [88.6042, 24.3745] },
+            { "name": "Motihar", "centroid": [88.6368, 24.3683] },
+            { "name": "Rajpara", "centroid": [88.5834, 24.3740] }
+          ]
+        },
+        {
+          "name": "Bogura",
+          "centroid": [89.3773, 24.8465],
+          "thanas": [{ "name": "Bogura Sadar", "centroid": [89.3773, 24.8465] }]
+        },
+        {
+          "name": "Pabna",
+          "centroid": [89.2372, 24.0064],
+          "thanas": [{ "name": "Pabna Sadar", "centroid": [89.2372, 24.0064] }]
+        },
+        {
+          "name": "Sirajganj",
+          "centroid": [89.7007, 24.4534],
+          "thanas": [{ "name": "Sirajganj Sadar", "centroid": [89.7007, 24.4534] }]
+        },
+        {
+          "name": "Natore",
+          "centroid": [88.9866, 24.4206],
+          "thanas": [{ "name": "Natore Sadar", "centroid": [88.9866, 24.4206] }]
+        },
+        {
+          "name": "Naogaon",
+          "centroid": [88.9466, 24.7936],
+          "thanas": [{ "name": "Naogaon Sadar", "centroid": [88.9466, 24.7936] }]
+        },
+        {
+          "name": "Chapainawabganj",
+          "centroid": [88.2775, 24.5965],
+          "thanas": [{ "name": "Chapainawabganj Sadar", "centroid": [88.2775, 24.5965] }]
+        },
+        {
+          "name": "Joypurhat",
+          "centroid": [89.0227, 25.0968],
+          "thanas": [{ "name": "Joypurhat Sadar", "centroid": [89.0227, 25.0968] }]
+        }
+      ]
+    },
+    {
+      "name": "Khulna",
+      "districts": [
+        {
+          "name": "Khulna",
+          "centroid": [89.5403, 22.8456],
+          "thanas": [
+            { "name": "Khulna Sadar", "centroid": [89.5644, 22.8158] },
+            { "name": "Sonadanga", "centroid": [89.5403, 22.8200] },
+            { "name": "Khalishpur", "centroid": [89.5446, 22.8511] }
+          ]
+        },
+        {
+          "name": "Jashore",
+          "centroid": [89.2081, 23.1664],
+          "thanas": [{ "name": "Jashore Sadar", "centroid": [89.2081, 23.1664] }]
+        },
+        {
+          "name": "Satkhira",
+          "centroid": [89.0705, 22.7185],
+          "thanas": [{ "name": "Satkhira Sadar", "centroid": [89.0705, 22.7185] }]
+        },
+        {
+          "name": "Bagerhat",
+          "centroid": [89.7895, 22.6516],
+          "thanas": [{ "name": "Bagerhat Sadar", "centroid": [89.7895, 22.6516] }]
+        },
+        {
+          "name": "Kushtia",
+          "centroid": [89.1220, 23.9013],
+          "thanas": [{ "name": "Kushtia Sadar", "centroid": [89.1220, 23.9013] }]
+        },
+        {
+          "name": "Jhenaidah",
+          "centroid": [89.1726, 23.5448],
+          "thanas": [{ "name": "Jhenaidah Sadar", "centroid": [89.1726, 23.5448] }]
+        },
+        {
+          "name": "Magura",
+          "centroid": [89.4198, 23.4873],
+          "thanas": [{ "name": "Magura Sadar", "centroid": [89.4198, 23.4873] }]
+        },
+        {
+          "name": "Narail",
+          "centroid": [89.5000, 23.1725],
+          "thanas": [{ "name": "Narail Sadar", "centroid": [89.5000, 23.1725] }]
+        },
+        {
+          "name": "Chuadanga",
+          "centroid": [88.8418, 23.6402],
+          "thanas": [{ "name": "Chuadanga Sadar", "centroid": [88.8418, 23.6402] }]
+        },
+        {
+          "name": "Meherpur",
+          "centroid": [88.6318, 23.7622],
+          "thanas": [{ "name": "Meherpur Sadar", "centroid": [88.6318, 23.7622] }]
+        }
+      ]
+    },
+    {
+      "name": "Sylhet",
+      "districts": [
+        {
+          "name": "Sylhet",
+          "centroid": [91.8687, 24.8949],
+          "thanas": [
+            { "name": "Sylhet Sadar", "centroid": [91.8687, 24.8949] },
+            { "name": "Zindabazar", "centroid": [91.8719, 24.8965] },
+            { "name": "Amberkhana", "centroid": [91.8700, 24.9045] }
+          ]
+        },
+        {
+          "name": "Moulvibazar",
+          "centroid": [91.7774, 24.4829],
+          "thanas": [{ "name": "Moulvibazar Sadar", "centroid": [91.7774, 24.4829] }]
+        },
+        {
+          "name": "Habiganj",
+          "centroid": [91.4155, 24.3749],
+          "thanas": [{ "name": "Habiganj Sadar", "centroid": [91.4155, 24.3749] }]
+        },
+        {
+          "name": "Sunamganj",
+          "centroid": [91.3950, 25.0658],
+          "thanas": [{ "name": "Sunamganj Sadar", "centroid": [91.3950, 25.0658] }]
+        }
+      ]
+    },
+    {
+      "name": "Barishal",
+      "districts": [
+        {
+          "name": "Barishal",
+          "centroid": [90.3535, 22.7010],
+          "thanas": [{ "name": "Barishal Sadar", "centroid": [90.3535, 22.7010] }]
+        },
+        {
+          "name": "Bhola",
+          "centroid": [90.6482, 22.6859],
+          "thanas": [{ "name": "Bhola Sadar", "centroid": [90.6482, 22.6859] }]
+        },
+        {
+          "name": "Patuakhali",
+          "centroid": [90.3373, 22.3596],
+          "thanas": [{ "name": "Patuakhali Sadar", "centroid": [90.3373, 22.3596] }]
+        },
+        {
+          "name": "Pirojpur",
+          "centroid": [89.9720, 22.5841],
+          "thanas": [{ "name": "Pirojpur Sadar", "centroid": [89.9720, 22.5841] }]
+        },
+        {
+          "name": "Barguna",
+          "centroid": [90.1264, 22.1592],
+          "thanas": [{ "name": "Barguna Sadar", "centroid": [90.1264, 22.1592] }]
+        },
+        {
+          "name": "Jhalokati",
+          "centroid": [90.1987, 22.6406],
+          "thanas": [{ "name": "Jhalokati Sadar", "centroid": [90.1987, 22.6406] }]
+        }
+      ]
+    },
+    {
+      "name": "Rangpur",
+      "districts": [
+        {
+          "name": "Rangpur",
+          "centroid": [89.2752, 25.7439],
+          "thanas": [{ "name": "Rangpur Sadar", "centroid": [89.2752, 25.7439] }]
+        },
+        {
+          "name": "Dinajpur",
+          "centroid": [88.6332, 25.6217],
+          "thanas": [{ "name": "Dinajpur Sadar", "centroid": [88.6332, 25.6217] }]
+        },
+        {
+          "name": "Gaibandha",
+          "centroid": [89.5418, 25.3288],
+          "thanas": [{ "name": "Gaibandha Sadar", "centroid": [89.5418, 25.3288] }]
+        },
+        {
+          "name": "Kurigram",
+          "centroid": [89.6487, 25.8054],
+          "thanas": [{ "name": "Kurigram Sadar", "centroid": [89.6487, 25.8054] }]
+        },
+        {
+          "name": "Lalmonirhat",
+          "centroid": [89.4460, 25.9165],
+          "thanas": [{ "name": "Lalmonirhat Sadar", "centroid": [89.4460, 25.9165] }]
+        },
+        {
+          "name": "Nilphamari",
+          "centroid": [88.8560, 25.9318],
+          "thanas": [{ "name": "Nilphamari Sadar", "centroid": [88.8560, 25.9318] }]
+        },
+        {
+          "name": "Panchagarh",
+          "centroid": [88.5542, 26.3411],
+          "thanas": [{ "name": "Panchagarh Sadar", "centroid": [88.5542, 26.3411] }]
+        },
+        {
+          "name": "Thakurgaon",
+          "centroid": [88.4660, 26.0337],
+          "thanas": [{ "name": "Thakurgaon Sadar", "centroid": [88.4660, 26.0337] }]
+        }
+      ]
+    },
+    {
+      "name": "Mymensingh",
+      "districts": [
+        {
+          "name": "Mymensingh",
+          "centroid": [90.4203, 24.7471],
+          "thanas": [{ "name": "Mymensingh Sadar", "centroid": [90.4203, 24.7471] }]
+        },
+        {
+          "name": "Jamalpur",
+          "centroid": [89.9378, 24.9375],
+          "thanas": [{ "name": "Jamalpur Sadar", "centroid": [89.9378, 24.9375] }]
+        },
+        {
+          "name": "Netrokona",
+          "centroid": [90.7279, 24.8709],
+          "thanas": [{ "name": "Netrokona Sadar", "centroid": [90.7279, 24.8709] }]
+        },
+        {
+          "name": "Sherpur",
+          "centroid": [90.0153, 25.0205],
+          "thanas": [{ "name": "Sherpur Sadar", "centroid": [90.0153, 25.0205] }]
+        }
+      ]
+    }
+  ]
+}

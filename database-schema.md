@@ -70,6 +70,8 @@ The Becha-Kena data layer is architected around **5 fundamental principles** to 
 | **10** | **`reports`** | Trust & Safety | `_id` (`ObjectId`) | `{ reporterId: 1, targetId: 1 }` (Unique)<br>`{ status: 1, createdAt: 1 }` | **Restricted** | User/listing abuse tickets, scam complaints, and 90-day immutable listing/chat JSON snapshots. |
 | **11** | **`ban_appeals`** | Compliance Ticket | `_id` (`ObjectId`) | `{ userId: 1 }`<br>`{ status: 1, submittedAt: 1 }` | **Restricted** | Dispute records submitted by suspended/banned users, routed to the Admin Compliance Officer queue. |
 | **12** | **`admin_audit_logs`** | Security Audit Trail | `_id` (`ObjectId`) | `{ adminId: 1, createdAt: -1 }`<br>`{ targetId: 1, targetType: 1 }` | **Critical (Audit)** | Strictly append-only, immutable record of all privileged staff operations (Kill Switch, manual KYC override, warrant exports). |
+| **13** | **`admin_2fa_secrets`** | Security Secret | `_id` (`ObjectId`) | `{ userId: 1 }` (Unique) | **Critical (2FA)** | AES-256-GCM encrypted TOTP secrets and recognized device fingerprints for staff accounts (Decision D-04). |
+| **14** | **`notifications`** | In-App Alert Store | `_id` (`ObjectId`) | `{ userId: 1, createdAt: -1 }`<br>`{ userId: 1, readAt: 1 }`<br>`{ createdAt: 1 }` (TTL: 90 Days) | **Confidential** | Persistent in-app notifications backing PRD §6 Event & Notification Matrix (Decision D-05). |
 
 ---
 
@@ -145,8 +147,9 @@ The `identity_verifications` collection manages sensitive government identity da
 | `status` | `string` | `'pending' \| 'verified' \| 'rejected' \| 'manual_review'` | No | `'pending'` | Current verification state. |
 | `canonicalNidHash` | `string` | `string` | No | None | `HMAC-SHA-256` of normalized 10-digit Smart NID. `select: false`. Unique partial index prevents multi-account fraud. |
 | `compositeDobHash` | `string` | `string` | No | None | `HMAC-SHA-256(DOB + NormalizedName)`. `select: false`. Cross-validates legacy 13/17 digit paper NIDs. |
+| `guardianCanonicalNidHash` | `string` | `string \| null` | Yes | `null` | `HMAC-SHA-256` of guardian's canonical Smart NID (`select: false`, sparse index) for 2-minor quota and contamination rule enforcement. |
 | `guardianName` | `string` | `string \| null` | Yes | `null` | Legal guardian's full name (Mandatory if `verificationType === 'MINOR_GUARDIAN'`). |
-| `guardianRelationship` | `string` | `'FATHER' \| 'MOTHER' \| 'LEGAL_GUARDIAN' \| null` | Yes | `null` | Relationship descriptor for minor account verification. |
+| `guardianRelationship` | `string` | `'FATHER' \| 'MOTHER' \| 'ADULT_SIBLING' \| 'LEGAL_GUARDIAN' \| null` | Yes | `null` | Relationship descriptor for minor account verification (includes `ADULT_SIBLING` per PRD `FR-KYC-01` & Decision D-03). |
 | `storageKeys` | `object` | `StorageKeys` | No | Subdoc | Encrypted R2 storage keys for encrypted front, back, and selfie files. `select: false`. |
 | `porichoyRefId` | `string` | `string \| null` | Yes | `null` | Transaction reference ID returned by Porichoy e-KYC API. `select: false`. |
 | `porichoyResponse` | `object` | `Record<string, any> \| null`| Yes | `null` | AES-256 encrypted raw Porichoy JSON response payload. `select: false`. |
@@ -438,12 +441,45 @@ The `admin_audit_logs` collection provides a cryptographically tamper-evident, s
 | `_id` | `ObjectId` | `Types.ObjectId` | No | Auto | Primary Key. |
 | `adminId` | `ObjectId` | `Types.ObjectId` | No | None | Ref: `users._id`. Privileged staff member executing the operation. |
 | `action` | `string` | `string` | No | None | Operation code (e.g., `'USER_BAN'`, `'KYC_MANUAL_APPROVE'`, `'LISTING_TAKEDOWN'`). |
-| `targetType` | `string` | `'USER' \| 'LISTING' \| 'KYC'` | No | None | Entity type affected by the operation. |
+| `targetType` | `string` | `'USER' \| 'LISTING' \| 'KYC' \| 'REPORT' \| 'APPEAL' \| 'SYSTEM'` | No | None | Entity type affected by the operation. |
 | `targetId` | `ObjectId` | `Types.ObjectId` | No | None | Document ID of the entity affected. |
 | `details` | `object` | `Record<string, any>` | No | None | Immutable JSON diff recording state before and after operation. |
 | `ipAddress` | `string` | `string` | No | None | Client IP address of the staff member. |
 | `userAgent` | `string` | `string` | No | None | Client browser and platform fingerprint. |
 | `createdAt` | `date` | `Date` | No | Auto | Immutable timestamp. Update and delete operations strictly forbidden. |
+
+---
+
+### 3.13 `admin_2fa_secrets`
+
+Stores AES-256-GCM encrypted TOTP secrets and recognized device lists for internal staff accounts (Decision D-04, `architecture.md §5.7`).
+
+| Field Name | BSON Type | TypeScript Type | Nullable | Default | Constraints & Description |
+|:---|:---:|:---:|:---:|:---:|:---|
+| `_id` | `ObjectId` | `Types.ObjectId` | No | Auto | Primary Key. |
+| `userId` | `ObjectId` | `Types.ObjectId` | No | None | Ref: `users._id`. Unique index. |
+| `secretEncrypted` | `string` | `string` | No | None | AES-256-GCM encrypted TOTP base32 secret. `select: false`. |
+| `enabledAt` | `date` | `Date \| null` | Yes | `null` | Timestamp when 2FA enrollment was confirmed. |
+| `lastUsedAt` | `date` | `Date \| null` | Yes | `null` | Timestamp of most recent TOTP verification. |
+| `recognizedDeviceIds` | `array` | `string[]` | No | `[]` | Trusted staff device fingerprints. |
+| `createdAt`, `updatedAt` | `date` | `Date` | No | Auto | Mongoose timestamps. |
+
+---
+
+### 3.14 `notifications`
+
+Stores persistent in-app notifications backing the PRD §6 Event & Notification Matrix (Decision D-05), auto-purged after 90 days via TTL index.
+
+| Field Name | BSON Type | TypeScript Type | Nullable | Default | Constraints & Description |
+|:---|:---:|:---:|:---:|:---:|:---|
+| `_id` | `ObjectId` | `Types.ObjectId` | No | Auto | Primary Key. |
+| `userId` | `ObjectId` | `Types.ObjectId` | No | None | Ref: `users._id`. Recipient user. |
+| `type` | `string` | `NotificationType` | No | None | Event enum (`KYC_APPROVED`, `NEW_MESSAGE`, `OFFER_UPDATED`, `CONFIRM_PURCHASE`, `SECURITY_ALERT`, etc.). |
+| `title` | `string` | `string` | No | None | Notification heading (max 140 chars). |
+| `body` | `string` | `string` | No | None | Notification body text (max 500 chars). |
+| `data` | `object` | `Record<string, any>` | No | `{}` | Deep-link metadata payload (e.g., `{ listingId, threadId }`). |
+| `readAt` | `date` | `Date \| null` | Yes | `null` | Timestamp when user marked notification read. |
+| `createdAt` | `date` | `Date` | No | Auto | Creation timestamp. TTL index: `7,776,000s` (90 days). |
 
 ---
 
